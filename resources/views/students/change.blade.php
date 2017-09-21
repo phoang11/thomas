@@ -15,7 +15,7 @@
                     @endif
 
                     <!-- New Student Form -->
-                    <form action="{{ url('student') }}" method="POST" class="form-horizontal">
+                    <form action="{{ url('student/' . $student->id . '/update') }}" method="POST" class="form-horizontal">
                         {{ csrf_field() }}
 
                         <!-- Student FirstName -->
@@ -23,7 +23,7 @@
                             <label for="student-firstname" class="col-sm-3 control-label">First name</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="firstname" id="student-firstname" class="form-control">
+                                <input type="text" name="firstname" value="{{ $student->firstname}}" id="student-firstname" class="form-control">
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                             <label for="student-lastname" class="col-sm-3 control-label">Last name</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="lastname" id="student-lastname" class="form-control">
+                                <input type="text" name="lastname" value="{{ $student->lastname}}" id="student-lastname" class="form-control">
                             </div>
                         </div>
 
@@ -39,30 +39,11 @@
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
                                 <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-plus"></i> Add Student
+                                    <i class="fa fa-plus"></i> Update Student
                                 </button>
                             </div>
                         </div>
                     </form>
-
-                    <ul class="list-group">
-                        @foreach ($students as $student)
-                            <li class="list-group-item">
-                                {{ $student->firstname . ' ' . $student->lastname }} - {{ $student->user_id }}
-                                <span>
-                                    
-
-                                <form action="{{url('student/' . $student->id)}}">
-                                    
-                                    <button type="submit" id="view-student-{{ $student->id }}" class="btn btn-primary">
-                                        <i class="fa fa-btn fa-trash"></i>View
-                                    </button>
-                                </form>
-
-                                </span>
-                            </li>
-                        @endforeach
-                    <ul>
 
                 </div>
             </div>

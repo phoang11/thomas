@@ -34,6 +34,21 @@ class StudentController extends Controller
     }
 
     /**
+     * Show the specific student.
+     *
+     * @param  Request  $request
+     * @param  Student  $student
+     * @return Response
+     */
+    public function show(Request $request, Student $student)
+    {
+
+        return view('students.student', [
+            'student' => $student,
+        ]);
+    }
+
+    /**
      * Create a new student.
      *
      * @param  Request  $request
@@ -53,6 +68,41 @@ class StudentController extends Controller
 
         return redirect('/students');
     }
+
+    /**
+     * Change the given student.
+     *
+     * @param  Request  $request
+     * @param  Student  $student
+     * @return Response
+     */
+    public function change(Request $request, Student $student)
+    {
+            return view('students.change', [
+                'student' => $student,
+        ]);
+    }
+
+    /**
+     * Update the given student.
+     *
+     * @param  Request  $request
+     * @param  Student  $student
+     * @return Response
+     */
+    public function update(Request $request, Student $student)
+    {
+        //dd($request->firstname);
+
+        $student->firstname = $request->firstname;
+        $student->lastname = $request->lastname;
+
+        $student->save();
+
+
+        return redirect('/student/' . $student->id);;
+    }
+
 
     /**
      * Destroy the given student.
