@@ -26,7 +26,7 @@ class Student extends Model
     ];
 
     /**
-     * Get the user that owns the task.
+     * Get the user that owns the student.
      */
     public function user()
     {

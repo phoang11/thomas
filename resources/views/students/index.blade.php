@@ -14,15 +14,63 @@
                         </div>
                     @endif
 
-                    @foreach ($students as $student)
-                        <div>{{ $student->firstname }} {{ $student->lastname }}</div>
-                    @endforeach
-                    
+                    <!-- New Student Form -->
+                    <form action="{{ url('student') }}" method="POST" class="form-horizontal">
+                        {{ csrf_field() }}
+
+                        <!-- Student FirstName -->
+                        <div class="form-group">
+                            <label for="student-firstname" class="col-sm-3 control-label">First name</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" name="firstname" id="student-firstname" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="student-lastname" class="col-sm-3 control-label">Last name</label>
+
+                            <div class="col-sm-6">
+                                <input type="text" name="lastname" id="student-lastname" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- Add Student Button -->
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-6">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fa fa-plus"></i> Add Student
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <ul class="list-group">
+                        @foreach ($students as $student)
+                            <li class="list-group-item">
+                                {{ $student->firstname . ' ' . $student->lastname }} - {{ $student->user_id }}
+                                <span>
+                                    <form action="{{url('student/' . $student->id)}}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+
+                                        <button type="submit" id="delete-student-{{ $student->id }}" class="btn btn-danger">
+                                            <i class="fa fa-btn fa-trash"></i>Delete
+                                        </button>
+                                    </form>
+                                </span>
+                            </li>
+                        @endforeach
+                    <ul>
+
                 </div>
             </div>
         </div>
     </div>
+
+    @include('layouts.errors')
+
 </div>
 @endsection
 
-@include('layouts.errors')
+
