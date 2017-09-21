@@ -14,3 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/students', 'StudentController@index');
+Route::post('/student', 'StudentController@store');
+Route::delete('/student/{task}', 'StudentController@destroy');
