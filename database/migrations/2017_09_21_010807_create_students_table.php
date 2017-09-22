@@ -18,6 +18,16 @@ class CreateStudentsTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('middlename')->nullable();
+            $table->date('dob');
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('zipcode', 5)->nullable();
+            $table->string('phone', 10)->nullable();
+            $table->string('phone2', 10)->nullable();
             $table->timestamps();
         });
     }

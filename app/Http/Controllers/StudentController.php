@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 use App\Student;
 
@@ -57,13 +58,33 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'required|max:255',
-            'lastname' => 'required|max:255',
+            'firstname' => 'required|max:255|alpha_dash',
+            'lastname' => 'required|max:255|alpha_dash',
+            'middlename' => 'max:100|alpha_dash',
+            'dob'=> 'date|before:today',
+            'father_name' => 'max:255|alpha_dash',
+            'mother_name' => 'max:255|alpha_dash',
+            'address' => 'alpha_dash',
+            'address2' => 'alpha_dash',
+            'city' => 'max:100|alpha',
+            'zipcode' => 'digits:5',
+            'phone' => 'digits:10',
+            'phone2' => 'digits:10',
         ]);
 
         $request->user()->students()->create([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
+            'middlename' => $request->middlename,
+            'dob'=> Carbon::create(2017,9,23),
+            'father_name' => $request->father_name,
+            'mother_name' => $request->mother_name,
+            'address' => $request->address,
+            'address2' => $request->address2,
+            'city' => $request->city,
+            'zipcode' => $request->zipcode,
+            'phone' => $request->phone,
+            'phone2' => $request->phone2,
         ]);
 
         return redirect('/students');
