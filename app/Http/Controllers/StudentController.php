@@ -58,32 +58,32 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'firstname' => 'required|max:255|alpha_dash',
-            'lastname' => 'required|max:255|alpha_dash',
-            'middlename' => 'max:100|alpha_dash',
-            'dob'=> 'date|before:today',
+            'first_name' => 'required|max:255|alpha_dash',
+            'last_name' => 'required|max:255|alpha_dash',
+            'middle_name' => 'max:100|alpha_dash',
+            'date_of_birth'=> 'date|before:today',
             'father_name' => 'max:255|alpha_dash',
             'mother_name' => 'max:255|alpha_dash',
             'address' => 'alpha_dash',
             'address2' => 'alpha_dash',
             'city' => 'max:100|alpha',
             'zipcode' => 'digits:5',
-            'phone' => 'digits:10',
+            'phone1' => 'digits:10',
             'phone2' => 'digits:10',
         ]);
 
         $request->user()->students()->create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'middlename' => $request->middlename,
-            'dob'=> Carbon::create(2017,9,23),
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'middle_name' => $request->middle_name,
+            'date_of_birth'=> Carbon::create(2017,9,23),
             'father_name' => $request->father_name,
             'mother_name' => $request->mother_name,
             'address' => $request->address,
             'address2' => $request->address2,
             'city' => $request->city,
             'zipcode' => $request->zipcode,
-            'phone' => $request->phone,
+            'phone1' => $request->phone1,
             'phone2' => $request->phone2,
         ]);
 
@@ -115,8 +115,8 @@ class StudentController extends Controller
     {
         //dd($request->firstname);
 
-        $student->firstname = $request->firstname;
-        $student->lastname = $request->lastname;
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
 
         $student->save();
 

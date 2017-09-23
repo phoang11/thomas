@@ -23,7 +23,7 @@
                             <label for="student-firstname" class="col-sm-3 control-label">First name</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="firstname" id="student-firstname" class="form-control">
+                                <input type="text" name="first_name" id="student-firstname" class="form-control">
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                             <label for="student-lastname" class="col-sm-3 control-label">Last name</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="lastname" id="student-lastname" class="form-control">
+                                <input type="text" name="last_name" id="student-lastname" class="form-control">
                             </div>
                         </div>
 
@@ -48,12 +48,12 @@
                     <ul class="list-group">
                         @foreach ($students as $student)
                             <li class="list-group-item">
-                                {{ $student->firstname . ' ' . $student->lastname }} - {{ $student->user_id }}
+                                {{ $student->first_name . ' ' . $student->last_name }} - {{ $student->user_id }}
                                 <span>
-                                    
+
 
                                 <form action="{{url('student/' . $student->id)}}">
-                                    
+
                                     <button type="submit" id="view-student-{{ $student->id }}" class="btn btn-primary">
                                         <i class="fa fa-btn fa-trash"></i>View
                                     </button>
@@ -73,5 +73,3 @@
 
 </div>
 @endsection
-
-

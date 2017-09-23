@@ -15,7 +15,7 @@
                     @endif
 
                     <div>
-                        {{ $student->firstname . ' ' . $student->lastname }} - {{ $student->user_id }}
+                        {{ $student->first_name . ' ' . $student->last_name }} - {{ $student->user_id }}
                     </div>
 
                     <form action="{{url('student/' . $student->id . '/edit')}}">
@@ -42,5 +42,3 @@
 
 </div>
 @endsection
-
-
