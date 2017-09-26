@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 use App\Student;
+use App\Http\Requests\CreateStudentForm;
 
 class StudentController extends Controller
 {
@@ -52,40 +52,12 @@ class StudentController extends Controller
     /**
      * Create a new student.
      *
-     * @param  Request  $request
+     * @param  CreateStudentForm $form
      * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateStudentForm $form)
     {
-        $this->validate($request, [
-            'first_name' => 'required|max:255|alpha_dash',
-            'last_name' => 'required|max:255|alpha_dash',
-            'middle_name' => 'max:100|alpha_dash',
-            'date_of_birth'=> 'date|before:today',
-            'father_name' => 'max:255|alpha_dash',
-            'mother_name' => 'max:255|alpha_dash',
-            'address' => 'alpha_dash',
-            'address2' => 'alpha_dash',
-            'city' => 'max:100|alpha',
-            'zipcode' => 'digits:5',
-            'phone1' => 'digits:10',
-            'phone2' => 'digits:10',
-        ]);
-
-        $request->user()->students()->create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'middle_name' => $request->middle_name,
-            'date_of_birth'=> Carbon::create(2017,9,23),
-            'father_name' => $request->father_name,
-            'mother_name' => $request->mother_name,
-            'address' => $request->address,
-            'address2' => $request->address2,
-            'city' => $request->city,
-            'zipcode' => $request->zipcode,
-            'phone1' => $request->phone1,
-            'phone2' => $request->phone2,
-        ]);
+        $form->persist();
 
         return redirect('/students');
     }
@@ -120,7 +92,6 @@ class StudentController extends Controller
 
         $student->save();
 
-
         return redirect('/student/' . $student->id);;
     }
 
@@ -128,13 +99,11 @@ class StudentController extends Controller
     /**
      * Destroy the given student.
      *
-     * @param  Request  $request
      * @param  Student  $student
      * @return Response
      */
-    public function destroy(Request $request, Student $student)
+    public function destroy(Student $student)
     {
-
 
         $student->delete();
 
