@@ -66,5 +66,17 @@ class DatabaseSeeder extends Seeder
             'phone1' => '',
             'phone2' => '',
         ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Administrator',
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Authenticated',
+        ]);
+
+        DB::table('roles')->insert([
+            'name' => 'Content Editor',
+        ]);
     }
 }
