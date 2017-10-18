@@ -14,10 +14,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
         @include('layouts.header')
+        <div class="usa-overlay"></div>
         @yield('content')
-    </div>
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

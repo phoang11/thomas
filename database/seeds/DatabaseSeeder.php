@@ -78,5 +78,19 @@ class DatabaseSeeder extends Seeder
         DB::table('roles')->insert([
             'name' => 'Content Editor',
         ]);
+
+        DB::table('basic_pages')->insert([
+            'id' => 1,
+            'title' => 'This is a first page\'s of the basic page',
+            'body' => 'lorm ip sum body',
+            'slug' => str_slug('This is a first page\'s of the basic page', '-'),
+        ]);
+
+        DB::table('basic_pages')->insert([
+            'id' => 2,
+            'title' => 'Đức Thánh Cha kỷ niệm 100 năm Bộ các Giáo Hội Đông Phương',
+            'body' => 'Ngài đưa ra lời mời gọi này trong bài giảng thánh lễ lúc quá 10 giờ sáng 12-10-2017, tại Đền thờ Đức Bà Cả ở Roma, nhân dịp kỷ niệm 100 năm thành lập Bộ các Giáo Hội Công Giáo Đông phương và Giáo Hoàng Học Viện Đông Phương gần đó.',
+            'slug' => str_slug('Đức Thánh Cha kỷ niệm 100 năm Bộ các Giáo Hội Đông Phương', '-'),
+        ]);
     }
 }

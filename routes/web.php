@@ -13,7 +13,8 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'BasicPageController@home')->name('home');
+Route::get('/{id}', 'BasicPageController@show');
 
 Route::get('/students', 'StudentController@index');
 Route::post('/student', 'StudentController@store');
