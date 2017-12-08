@@ -14,7 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'BasicPageController@home')->name('home');
-Route::get('/{id}', 'BasicPageController@show');
+Route::get('/{slug}', 'BasicPageController@show');
 
 Route::get('/students', 'StudentController@index');
 Route::post('/student', 'StudentController@store');

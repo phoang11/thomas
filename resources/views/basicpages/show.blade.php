@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{$basicpage->title}}
+                    
                     basic page content
 
                 </div>

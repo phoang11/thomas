@@ -34,7 +34,9 @@ class BasicPageController extends Controller
      */
      public function show(Request $request, BasicPage $basicpage)
      {
-        // dd($basicpage);
-        return view('basicpages.show');
+
+        return view('basicpages.show', [
+            'basicpage' => $basicpage,
+        ]);
      }
 }
